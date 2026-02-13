@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المفاجأة لشهد وعمر 💖</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Cairo', sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: #ff0066;
+        text-align: center;
+        background: #ffe6f0;
+    }
+
+    h1 { font-size: 2.5em; margin-bottom: 10px; }
+    p { font-size: 1.3em; margin: 10px; }
+    #countdown { font-size: 1.5em; margin: 20px 0; }
+
+    img {
+        width: 250px;
+        border-radius: 15px;
+        margin: 15px;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    }
+
+    iframe { margin-top: 20px; border: none; }
+
+    /* الخلفية المتحركة بالقلوب والفراشات */
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        transform: rotate(45deg);
+        animation: floatHeart linear infinite;
+    }
+    .heart:before, .heart:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: pink;
+        border-radius: 50%;
+    }
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { left: 10px; top: 0; }
+
+    @keyframes floatHeart {
+        0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(-100px) rotate(45deg); opacity: 0; }
+    }
+
+</style>
+</head>
+<body>
+
+<h1>شهد ❤️ عمر</h1>
+<p>من يوم 11 يوليو 2024 ❤️</p>
+<div id="countdown"></div>
+
+<!-- صورك مباشرة بدون مجلد -->
+<img src="1.png" alt="لحظة رومانسية 1">
+<img src="2.png" alt="لحظة رومانسية 2">
+<img src="3.png" alt="لحظة رومانسية 3">
+
+<!-- أغنية YouTube -->
+<iframe width="300" height="150" src="https://www.youtube.com/embed/eJoCz2cWtZE?autoplay=1&loop=1&playlist=eJoCz2cWtZE" allow="autoplay" allowfullscreen></iframe>
+
+<script>
+    // العداد من أول يوم اتقابلتوا
+    const startDate = new Date('2024-07-11T00:00:00');
+    function updateCountdown() {
+        const now = new Date();
+        const diff = now - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const years = Math.floor(days / 365);
+        const months = Math.floor((days % 365) / 30);
+        const daysRemaining = (days % 365) % 30;
+
+        document.getElementById('countdown').innerText = 
+            `بقينا مع بعض من ${years} سنة، ${months} شهر، ${daysRemaining} يوم`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // توليد قلوب عشوائية على الصفحة
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 6000);
+    }
+    setInterval(createHeart, 500); // كل نصف ثانية قلب جديد
+</script>
+
+</body>
+</html>
